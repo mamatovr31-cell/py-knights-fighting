@@ -11,7 +11,7 @@ def battle(
         knights: dict[str, Knight],
 ) -> dict[str, int]:
     result = {}
-    for knight_a,knight_b in pairs:
+    for knight_a, knight_b in pairs:
         attacker = knights[knight_a]
         defender = knights[knight_b]
         damage_a_to_b = max(0, attacker.power - defender.protection)
