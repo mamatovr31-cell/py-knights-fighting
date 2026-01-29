@@ -1,13 +1,11 @@
 from typing import Mapping, Any
 
-from app.skil.data import KNIGHTS
 from app.skil.factories import build_knights
-from app.skil.model import Knight
 
 pairs = [("lancelot", "mordred"), ("arthur", "red_knight")]
 
 
-def battle(knights) -> dict[str, int]:
+def battle(knights: Mapping[str, Any]) -> dict[str, int]:
     """
     Accept either:
       - a raw knights config dict (like KNIGHTS), or
