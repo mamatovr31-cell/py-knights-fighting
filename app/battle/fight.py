@@ -1,16 +1,24 @@
+from typing import Mapping, Any
+
 from app.skil.data import KNIGHTS
 from app.skil.factories import build_knights
 from app.skil.model import Knight
 
-
 pairs = [("lancelot", "mordred"), ("arthur", "red_knight")]
-knights = build_knights(KNIGHTS)
 
 
-def battle(
-        knights: dict[str, Knight],
-) -> dict[str, int]:
-    result = {}
+def battle(knights) -> dict[str, int]:
+    """
+    Accept either:
+      - a raw knights config dict (like KNIGHTS), or
+      - a dict[str, Knight] (already-built Knight objects).
+    """
+    # If passed raw dicts (values are dict), convert to Knight objects
+    sample = next(iter(knights.values()))
+    if isinstance(sample, dict):
+        knights = build_knights(knights)
+
+    result: dict[str, int] = {}
     for knight_a, knight_b in pairs:
         attacker = knights[knight_a]
         defender = knights[knight_b]

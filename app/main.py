@@ -1,4 +1,5 @@
-from app.battle.fight import battle, knights
+from app.battle.fight import battle
+from app.skil.data import KNIGHTS
 
 
-print(battle(knights))
+print(battle(KNIGHTS))
